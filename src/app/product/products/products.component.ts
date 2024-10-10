@@ -1,10 +1,62 @@
-import { Component } from '@angular/core';
+import { NgIfContext } from '@angular/common';
+import { Component, TemplateRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent {
+export class ProductsComponent   {
+  serach:string="";
+  listProducts: Product[] = [
+    { 
+      id: 1,
+      name: 'Refrigérateur LG Inox',
+      image: 'assets/images/product1.jpg',
+      categoryId: 1,
+      description: '',
+      price: 2800,
+      brand: 'LG',
+      promotion: 0,
+      quantity:4,
+      nb_likes:3,
+    },
+    {
+      id: 3,
+      name: 'Lave vaisselle Beko',
+      image: 'assets/images/product4.jpeg',
+      categoryId: 1,
+      description: '',
+      price: 1875,
+      brand: 'BEKO',
+      promotion: 0,
+      quantity:4,
+      nb_likes:3,
+    }]
+   id!:number;
 
+   
+  constructor(private activated:ActivatedRoute) {
+    this.id=this.activated.snapshot.params['id'];
+    console.log('Snapshot method')
+    console.log(this.activated.snapshot.params['id']);
+    console.log("params :")
+    this.activated.params.subscribe({
+      next :(param)=>console.log(param['id'])
+    })
+    console.log('paramMap');
+    this.activated.paramMap.subscribe({
+      next :(param)=>console.log(param.get('id'))
+    })
+  }
+  increment(Product :Product)
+  {  Product.nb_likes++;
+     
+  }
+  Buy(Product :Product)
+  {  Product.quantity--;
+     
+  }
 }

@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipe/filter.pipe';
 import { HighlightDirective } from './highlight/highlight.directive';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ProductModule } from './product/product.module';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +21,14 @@ import { ProductModule } from './product/product.module';
     HomeComponent,
     ListcategoryComponent,
     FilterPipe, 
-   HighlightDirective, NotFoundComponent
+   HighlightDirective,
+    NotFoundComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ProductModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

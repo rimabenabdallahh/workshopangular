@@ -1,1 +1,33 @@
-<p>products works!</p>
+<div class="container" style="margin-top:30px">
+    <div class="row"> 
+        <div  class="form-group">
+        <label>Search :</label>
+        <input type="text" class="form-control" name="filter" [(ngModel)]="serach">
+    </div>
+            <div class="alert alert-danger" *ngif="listProducts.length==0">
+                <h2>Aucun Produit</h2>
+        </div>
+        <ng-container *ngFor="let p of listProducts | filterProduct:serach"> 
+            <!-- <div *ngIf="title.toLowerCase() == c.title.toLowerCase() || title == ''" class="col-md-4" style="margin-bottom: 20px;"> -->
+            <div class="col-md-4" style="margin-bottom: 20px;">
+                <img [src]="p.image" [alt]="p.name" class="img-fluid h-50 w-75">
+                <h3 [ngClass]="p.nb_likes >= 10 ? 'clignote':''">{{p.name}}</h3>
+                <h3>{{p.price}}</h3>  
+                <h3>{{p.nb_likes}}</h3>
+                <h3>{{p.quantity}}</h3>
+                <div class="row">
+                    <div class row="col-6">
+                        <button type="button" class="btn btn-outline-primary" (click)="increment(p)">Like</button>
+                    </div>
+                    <div class row="col-6">
+                    <button *ngIf="p.quantity==0 ;else elseBlock" type="button" class="btn btn-outline-secondary"(click)="Buy(p)" disabled>Buy</button> 
+                        <ng-template #elseBlock>
+                        <button type="button" class="btn btn-outline-secondary"(click)="Buy(p)"  >Buy</button>
+                    </ng-template>
+                    </div> 
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
