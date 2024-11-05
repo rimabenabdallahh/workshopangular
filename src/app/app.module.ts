@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipe/filter.pipe';
 import { HighlightDirective } from './highlight/highlight.directive';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FormCategoryComponent } from './components/form-category/form-category.component';
+import { FormUserComponent } from './form-user/form-user.component';
+import { MainUserComponent } from './main-user/main-user.component';
+import { TestComponent } from './components/test/test.component';
 
 
 @NgModule({
@@ -22,12 +26,16 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ListcategoryComponent,
     FilterPipe, 
    HighlightDirective,
-    NotFoundComponent, 
+    NotFoundComponent,
+    FormCategoryComponent,
+    FormUserComponent,
+    MainUserComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    TestComponent
     
   ],
   providers: [],

@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <form #f="ngForm">
+         
+            <div class="mb-3">
+                <label>First Name:</label>
+                <input type="text" class="form-control" name="firstname" [(ngModel)]="user.firstname" #firstname="ngModel" required minlength="3" pattern="[a-zA-Z]*">
+                Invalid: {{firstname.invalid}}<br>
+                Touched: {{firstname.touched}}<br>
+                Dirty: {{firstname.dirty}}<br>
+                Errors: {{firstname.errors | json}}
+                <div *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)" class="alert alert-danger">
+                    <div *ngIf="firstname.errors!['required']">First name is required</div>
+                    <div *ngIf="firstname.errors!['minlength']">First name must have at least 3 characters</div>
+                    <div *ngIf="firstname.errors!['pattern']">First name can only contain letters</div>
+                </div>
+            </div>
+
+          
+            <div class="mb-3">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" name="lastname" [(ngModel)]="user.lastname" #lastname="ngModel" required minlength="3" pattern="[a-zA-Z]*">
+                Invalid: {{lastname.invalid}}<br>
+                Touched: {{lastname.touched}}<br>
+                Dirty: {{lastname.dirty}}<br>
+                Errors: {{lastname.errors | json}}
+                <div *ngIf="lastname.invalid && (lastname.touched || lastname.dirty)" class="alert alert-danger">
+                    <div *ngIf="lastname.errors!['required']">Last name is required</div>
+                    <div *ngIf="lastname.errors!['minlength']">Last name must have at least 3 characters</div>
+                    <div *ngIf="lastname.errors!['pattern']">Last name can only contain letters</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label>Email:</label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required pattern="[a-zA-Z0-9._-]+@gmail.com">
+                Invalid: {{email.invalid}}<br>
+                Touched: {{email.touched}}<br>
+                Dirty: {{email.dirty}}<br>
+                Errors: {{email.errors | json}}
+                <div *ngIf="email.invalid && (email.touched || email.dirty)" class="alert alert-danger">
+                    <div *ngIf="email.errors!['required']">Email is required</div>
+                    <div *ngIf="email.errors!['required']">Email must end with gmail.com</div>
+                </div>
+            </div>
+
+           
+            <div class="mb-3">
+                <label>Password:</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required minlength="8" pattern="[a-zA-Z0-9]{8,}">
+                Invalid: {{password.invalid}}<br>
+                Touched: {{password.touched}}<br>
+                Dirty: {{password.dirty}}<br>
+                Errors: {{password.errors | json}}
+                <div *ngIf="password.invalid && (password.touched || password.dirty)" class="alert alert-danger">
+                    <div *ngIf="password.errors!['required']">Password is required</div>
+                    <div *ngIf="password.errors!['minlength']">Password must be at least 8 characters</div>
+                    <div *ngIf="password.errors!['pattern']">Password must contain only letters and numbers</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label>Phone Number:</label>
+                <input type="text" class="form-control" name="numTel" [(ngModel)]="user.numTel" #numTel="ngModel" required minlength="10">
+                Invalid: {{numTel.invalid}}<br>
+                Touched: {{numTel.touched}}<br>
+                Dirty: {{numTel.dirty}}<br>
+                Errors: {{numTel.errors | json}}
+                <div *ngIf="numTel.invalid && (numTel.touched || numTel.dirty)" class="alert alert-danger">
+                    <div *ngIf="numTel.errors!['required']">Phone number is required</div>
+                    <div *ngIf="numTel.errors!['minlength']">Phone number must be at least 10 digits</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Category:</label>
+                <input type="text" class="form-control" [(ngModel)]="user.category" name="category" value="Customer" readonly>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-outline-primary" value="Save" (click)="addUser()" [disabled]="f.invalid">
+            </div>
+        </form>
+    </div>
+</div>

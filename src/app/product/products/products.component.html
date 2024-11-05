@@ -2,12 +2,12 @@
     <div class="row"> 
         <div  class="form-group">
         <label>Search :</label>
-        <input type="text" class="form-control" name="filter" [(ngModel)]="serach">
+        <input type="text" class="form-control" name="filter" [(ngModel)]="search">
     </div>
             <div class="alert alert-danger" *ngif="listProducts.length==0">
                 <h2>Aucun Produit</h2>
         </div>
-        <ng-container *ngFor="let p of listProducts | filterProduct:serach"> 
+        <ng-container *ngFor="let p of listProducts | filterProduct:search"> 
             <!-- <div *ngIf="title.toLowerCase() == c.title.toLowerCase() || title == ''" class="col-md-4" style="margin-bottom: 20px;"> -->
             <div class="col-md-4" style="margin-bottom: 20px;">
                 <img [src]="p.image" [alt]="p.name" class="img-fluid h-50 w-75">
