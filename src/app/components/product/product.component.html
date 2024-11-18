@@ -1,0 +1,21 @@
+<div class="container" style="margin-top:30px">
+    <div class="row">
+        <div class="form-group">
+            <label>Search : </label>
+            <input  style="margin-bottom:30px" type="text" class="form-control" name="filter" [(ngModel)]="search">
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="alert alert-danger" *ngIf="listProducts.length == 0">
+            <h2>Aucun produit</h2>
+        </div>
+        <ng-container *ngFor="let p of listProducts | filterProduct:search">
+            <!-- <div *ngIf="title.toLowerCase() == c.title.toLowerCase() || title == ''" class="col-md-4" style="margin-bottom: 20px;"> -->
+          <app-list-product  [data]="p" (buyEvent)="buy($event)" (incrementEvent)="increment($event)" (addEvent)="add($event)">
+            
+          </app-list-product>
+        </ng-container>
+
+    </div>
+</div>
