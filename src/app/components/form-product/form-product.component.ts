@@ -14,12 +14,12 @@ export class FormProductComponent implements OnInit {
   ngOnInit() {
     this.search = new FormControl();
     this.product = this.fb.group({
-      name: ["",[Validators.required]],
+      name: ["",[Validators.required,Validators.minLength(4)]],
       image: [],
       description: [],
       price: [],
       brand: this.fb.group({
-        name: ["",[Validators.minLength(3),Validators.required]],
+        name: ["",[Validators.minLength(4),Validators.required]],
         logo: [],
       }),
       promotion: [],

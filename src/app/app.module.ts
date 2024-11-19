@@ -18,6 +18,7 @@ import { FormCategoryComponent } from './components/form-category/form-category.
 import { TestComponent } from './components/test/test.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ListProductComponent } from './components/list-product/list-product.component';
+import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ListProductComponent } from './components/list-product/list-product.com
     NotFoundComponent,
     FormCategoryComponent,
     CategoryComponent,
+ 
   
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,TestComponent],

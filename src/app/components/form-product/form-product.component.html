@@ -6,12 +6,10 @@
     <div class="mb-3">
         <label>Name :</label>
         <input class="form-control" formControlName="name">
-        <div *ngIf="name.invalid && 
-        (name.touched || 
-        name.dirty)">Name is required</div>
+        <app-validation-messages [control]="product.get('name')"></app-validation-messages>
     </div>
     <div class="mb-3">
-        <label>Image :</label>
+        <label>Image :</label> 
         <input class="form-control" formControlName="image">
     </div>
     <div class="mb-3">
@@ -25,15 +23,7 @@
     <div class="mb-3" formGroupName="brand">
         <label>Brand Name :</label>
         <input class="form-control" formControlName="name">
-        <div *ngIf="brandName.invalid && 
-                (brandName.touched || 
-                brandName.dirty)">
-                <div *ngIf="brandName.errors!['required']">
-                    Brand Name is required
-                </div>
-                <div *ngIf="brandName.errors!['minlength']">
-                    Brand Name must have at least 3 characters
-                </div></div>
+                <app-validation-messages [control]="product.get('brand.name')"></app-validation-messages>
         <label>Brand Logo :</label>
         <input class="form-control" formControlName="logo">
     </div>
